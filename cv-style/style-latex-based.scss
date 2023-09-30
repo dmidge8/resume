@@ -1,0 +1,565 @@
+ /* Importing the latex css */
+
+ /* .ecvl {
+	@import url("latex-css/style.css")
+ } */
+
+ @import url("./latex-css/style.css");
+
+
+body {
+	box-sizing: content-box;
+	max-width: 21cm;
+	min-height: 28cm;
+}
+
+@page {
+	// margin-top: 4cm;
+	// margin-bottom: 4cm;
+	// margin-left: 4cm;
+	// margin-right: 4cm;
+	// margin: 2cm;
+	//margin: 0cm;
+	// padding: 2cm;
+
+	margin: 2mm;
+
+}
+
+@media print
+{
+	body {
+		// margin-top: 2cm;
+		// margin-bottom: 2cm;
+		// margin-left: 2cm;
+		// margin-right: 2cm;
+		//padding: 0mm;
+		
+		margin: 0cm;
+	}
+
+
+	section.experience {
+		h2 {
+			break-after: avoid;
+		}
+
+		// section:first-child {
+		// 	break-before: avoid;
+		// }
+	
+		// h2 + section {
+		// 	break-inside: avoid;
+		// }
+
+		section {
+			break-inside: avoid;
+		}
+	}
+
+
+	section.education {
+		h2 {
+			//break-before: always;
+			break-after: avoid;
+		}
+	
+		h2 + section {
+			break-before: avoid;
+		}
+
+		section {
+			break-inside: avoid;
+		}
+	}
+
+	section.comptency {
+		h2 {
+			//break-before: always;
+			break-after: avoid;
+		}
+	
+		h2 + section {
+			break-before: avoid;
+		}
+	}
+}
+
+
+
+
+// @media print and (min-height:29cm) and (max-height: 30cm)
+// {
+// 	/* A4 styling */ p.name::before {
+// 		content: "A4";
+// 	}
+// }
+
+// @media print and (min-height:125vw) and (max-height: 135vw)
+// {
+// 	/* letter-size styling */ .standard.container::before {
+// 		content: "LETTER";
+// 	}
+// }
+
+
+html[localization="FR"] {
+	@page {
+		margin: 1mm !important;
+	}
+}
+
+header {
+	// display: flex;
+	// flex-direction: column;
+	// flex-wrap: wrap;
+	// p {
+	// flex: 2;
+	// max-width: 50%;
+	// }
+
+	// /* Responsive layout - makes a one column-layout instead of two-column layout */
+	// @media (max-width: 800px) {
+	// 	//flex-direction: column;
+	// 	column-count: 1;
+	// }
+
+	display: grid;
+  	grid-template-columns: repeat(2, 1fr);
+  	// gap: 1rem;
+  	grid-template-columns: repeat(auto-fit);
+
+	p, a {
+		margin-top: 0px;
+		margin-left: 4rem;
+	}
+
+	p.name::before {
+		//content: "👱‍♂️: ";
+		content: "👤: ";
+		text-decoration: underline;
+	}
+
+	p.address::before {
+		content: "🏠: "
+	}
+
+	p.tel::before {
+		content: "📞: "
+	}
+
+	p.driving::before {
+		content: "🚗: "
+	}
+
+
+	p.title::before {
+		content: "🎓: "
+	}
+
+	p.email::before {
+		content: "@: "
+	}
+
+}
+
+body {
+	line-height: normal;
+}
+
+
+
+// Variables
+$enable_verbose: false;
+$enable_student_projects: false;
+
+$deep_learning: true;
+$project_management: true;
+
+@mixin remove_strong($scss_var, $html_strong_class) {
+	@if (not($scss_var))
+	{
+		strong.#{$html_strong_class}
+		{
+			font-weight: normal;
+		}
+	}
+}
+
+@include remove_strong($deep_learning, "dl_fram");
+@include remove_strong($deep_learning, "proj");
+
+// @if (not($deep_learning))
+// {
+// 	strong.dl_fram
+// 	{
+// 		font-weight: normal;
+// 	}
+// }
+
+@if (not($enable_verbose))
+{
+	[verbose] {
+		display: none;
+	}
+}
+
+
+@if (not($enable_student_projects))
+{
+	[student_projects] {
+		display: none;
+	}
+}
+
+
+h2 {
+	margin-top: 2rem;
+}
+
+h3 {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+ul {
+	margin: 0rem;
+}
+
+section.summary {
+	margin-top: 2rem;
+
+	ul {
+		text-align: justify;
+	}
+}
+
+section.experience, section.education
+{
+
+	// For the timeline.
+	section
+	{
+		padding-bottom: 1.0rem;
+		border-left: 1px solid #abaaed;
+		position: relative;
+		padding-left: 20px;
+		margin-left: 10px;
+
+		/* If I want to disable the line of the timeline
+		&:last-child{
+			border: 0px;
+			padding-bottom: 0;
+		}*/
+		
+		&:before{
+			content: '';
+			width: 15px;
+			height: 15px;
+			background: white;
+			border: 1px solid #4e5ed3;
+			box-shadow: 3px 3px 0px #bab5f8;
+			box-shadow: 3px 3px 0px #bab5f8;
+			border-radius: 50%;
+			position: absolute;
+			left: -10px;
+			top: 0px;
+		}
+	}
+
+
+}
+
+html[language="fr"] {
+	section.experience
+	{
+		.title::after {
+			content: " à "
+		}
+	}
+}
+
+
+html[language="en"] {
+	section.experience
+	{
+		.title::after {
+			content: " at "
+		}
+	}
+}
+
+section.experience
+{
+	.date {
+		text-decoration: underline;
+	}
+
+	.date.begin::after {
+		content: " - ";
+	}
+
+	.date.end::after {
+		content: ":";
+	}
+
+	// .title::after {
+	// 	content: " à "
+	// }
+
+	.details {
+		text-align: justify;
+	}
+
+	.company {
+		font-style: italic;
+	}
+
+	.location {
+		&::before {
+			content: "(";
+		}
+		&::after {
+			content: ")";
+		}
+	}
+
+	// .duration {
+	// 	&::before {
+	// 		content: " - ";
+	// 	}
+	// }
+
+
+	.duration {
+		display: none;
+	}
+
+	.contract {
+		display: none;
+	}
+
+	p.company-description {
+		margin-left: 10px;
+	}
+
+	p {
+		margin-top: 0px;
+	}
+
+	& section > *:not(p.global) {
+		font-size: smaller;
+	}
+} 
+
+section.education
+{
+
+	.date {
+		text-decoration: underline;
+	}
+
+	.date.begin::after {
+		content: " - ";
+	}
+
+	.date.end::after {
+		content: ":";
+	}
+
+	.school::before {
+		content: " - "
+	}
+
+	.school {
+		font-style: italic;
+	}
+
+	.location {
+		&::before {
+			content: "(";
+		}
+		&::after {
+			content: ")";
+			//float: right;
+		}
+	}
+	.validated {
+		float: right;
+		&::after {
+			content: "✓";
+		}
+	}
+
+	p.detail {
+		margin-top: 0px;
+		margin-left: 10px;
+		font-size: smaller;
+	}
+}
+
+section.languages
+{
+	td {
+		padding: 0.3rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+section.competency
+{
+	h3 {
+		margin-top: 1.5rem;
+	}
+
+	.IT
+	{
+		// tr > td:first-child {
+		// 	border-right: 1.36px solid black;
+		// }
+
+		td {
+			border: 1.36px solid black;
+		}
+
+		*[rank]
+		{
+			&[rank="5"]::after {
+				content: " ★★★★★";
+			}
+
+			&[rank="4"]::after {
+				content: " ★★★★☆";
+			}
+
+			&[rank="3"]::after {
+				content: " ★★★☆☆";
+			}
+
+			&[rank="2"]::after {
+				content: " ★★☆☆☆";
+			}
+
+			&[rank="1"]::after {
+				content: " ★☆☆☆☆";
+			}
+
+			&[rank="0"]::after {
+				content: " ☆☆☆☆☆";
+			}
+
+
+			&::after
+			{
+				// vertical-align: super;
+				position: relative;
+				top: -0.8em;
+				font-size: 50%;
+			}
+
+			&::before
+			{
+				content: ", ";
+			}
+
+			&:first-child::before
+			{
+				content: "";
+			}
+		
+		}
+
+
+		ul
+		{
+			padding-left: 0px;
+			display: inline;
+			list-style-type: none;
+
+			//Enable this with the current version of firefox without dev edition.
+			@supports not (selector(:has(ul))) {
+				& > li {
+					display: inline;
+				}
+			}
+
+			ul {
+				display: inline;
+				li {
+					display: inline;
+					list-style-type: none;
+
+					&::after
+					{
+						content: ", ";
+					}
+
+					&:last-child::after
+					{
+						content: "";
+						margin-right: -4px;
+					}
+				}
+			}
+		}
+
+		ul:has(ul)
+		{
+			& > li
+			{
+				list-style-type: none;
+
+				ul {
+					font-size: smaller;
+					&::before {
+						content: " (";
+						margin-right: -4px;
+					}
+					&::after {
+						content: ")";
+						margin-right: -4px;
+					}
+				}
+
+				// * {
+				// 	padding-top: 1em;
+				// }
+				> {
+					display: block;
+				}
+			}
+		}
+
+
+		ul:not(:has(ul))
+		{
+			// display: grid;
+			// grid-template-columns: repeat(2, 1fr);
+			// grid-template-columns: repeat(auto-fit);
+
+			display: inline;
+
+			li
+			{
+				list-style-type: none;
+				display: inline;
+
+				&::after
+				{
+					content: ", ";
+				}
+
+				&:last-child::after
+				{
+					content: "";
+					margin-right: -4px;
+				}
+			}
+		}
+
+	}
+
+	
+
+}

@@ -1,0 +1,312 @@
+@charset "UTF-8";
+/* Importing the latex css */
+/* .ecvl {
+@import url("latex-css/style.css")
+} */
+@import url("./latex-css/style.css");
+body {
+  box-sizing: content-box;
+  max-width: 21cm;
+  min-height: 28cm;
+}
+
+@page {
+  margin: 2mm;
+}
+@media print {
+  body {
+    margin: 0cm;
+  }
+  section.experience h2 {
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+  section.experience section {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+  section.education h2 {
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+  section.education h2 + section {
+    -moz-column-break-before: avoid;
+         break-before: avoid;
+  }
+  section.education section {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+  }
+  section.comptency h2 {
+    -moz-column-break-after: avoid;
+         break-after: avoid;
+  }
+  section.comptency h2 + section {
+    -moz-column-break-before: avoid;
+         break-before: avoid;
+  }
+}
+@page {
+  html[localization=FR] {
+    margin: 1mm !important;
+  }
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit);
+}
+header p, header a {
+  margin-top: 0px;
+  margin-left: 4rem;
+}
+header p.name::before {
+  content: "👤: ";
+  text-decoration: underline;
+}
+header p.address::before {
+  content: "🏠: ";
+}
+header p.tel::before {
+  content: "📞: ";
+}
+header p.driving::before {
+  content: "🚗: ";
+}
+header p.title::before {
+  content: "🎓: ";
+}
+header p.email::before {
+  content: "@: ";
+}
+
+body {
+  line-height: normal;
+}
+
+[verbose] {
+  display: none;
+}
+
+[student_projects] {
+  display: none;
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  margin: 0rem;
+}
+
+section.summary {
+  margin-top: 2rem;
+}
+section.summary ul {
+  text-align: justify;
+}
+
+section.experience section, section.education section {
+  padding-bottom: 1rem;
+  border-left: 1px solid #abaaed;
+  position: relative;
+  padding-left: 20px;
+  margin-left: 10px;
+  /* If I want to disable the line of the timeline
+  &:last-child{
+  	border: 0px;
+  	padding-bottom: 0;
+  }*/
+}
+section.experience section:before, section.education section:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: white;
+  border: 1px solid #4e5ed3;
+  box-shadow: 3px 3px 0px #bab5f8;
+  box-shadow: 3px 3px 0px #bab5f8;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: 0px;
+}
+
+html[language=fr] section.experience .title::after {
+  content: " à ";
+}
+
+html[language=en] section.experience .title::after {
+  content: " at ";
+}
+
+section.experience .date {
+  text-decoration: underline;
+}
+section.experience .date.begin::after {
+  content: " - ";
+}
+section.experience .date.end::after {
+  content: ":";
+}
+section.experience .details {
+  text-align: justify;
+}
+section.experience .company {
+  font-style: italic;
+}
+section.experience .location::before {
+  content: "(";
+}
+section.experience .location::after {
+  content: ")";
+}
+section.experience .duration {
+  display: none;
+}
+section.experience .contract {
+  display: none;
+}
+section.experience p.company-description {
+  margin-left: 10px;
+}
+section.experience p {
+  margin-top: 0px;
+}
+section.experience section > *:not(p.global) {
+  font-size: smaller;
+}
+
+section.education .date {
+  text-decoration: underline;
+}
+section.education .date.begin::after {
+  content: " - ";
+}
+section.education .date.end::after {
+  content: ":";
+}
+section.education .school::before {
+  content: " - ";
+}
+section.education .school {
+  font-style: italic;
+}
+section.education .location::before {
+  content: "(";
+}
+section.education .location::after {
+  content: ")";
+}
+section.education .validated {
+  float: right;
+}
+section.education .validated::after {
+  content: "✓";
+}
+section.education p.detail {
+  margin-top: 0px;
+  margin-left: 10px;
+  font-size: smaller;
+}
+
+section.languages td {
+  padding: 0.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+section.competency h3 {
+  margin-top: 1.5rem;
+}
+section.competency .IT td {
+  border: 1.36px solid black;
+}
+section.competency .IT *[rank][rank="5"]::after {
+  content: " ★★★★★";
+}
+section.competency .IT *[rank][rank="4"]::after {
+  content: " ★★★★☆";
+}
+section.competency .IT *[rank][rank="3"]::after {
+  content: " ★★★☆☆";
+}
+section.competency .IT *[rank][rank="2"]::after {
+  content: " ★★☆☆☆";
+}
+section.competency .IT *[rank][rank="1"]::after {
+  content: " ★☆☆☆☆";
+}
+section.competency .IT *[rank][rank="0"]::after {
+  content: " ☆☆☆☆☆";
+}
+section.competency .IT *[rank]::after {
+  position: relative;
+  top: -0.8em;
+  font-size: 50%;
+}
+section.competency .IT *[rank]::before {
+  content: ", ";
+}
+section.competency .IT *[rank]:first-child::before {
+  content: "";
+}
+section.competency .IT ul {
+  padding-left: 0px;
+  display: inline;
+  list-style-type: none;
+}
+@supports not (selector(:has(ul))) {
+  section.competency .IT ul > li {
+    display: inline;
+  }
+}
+section.competency .IT ul ul {
+  display: inline;
+}
+section.competency .IT ul ul li {
+  display: inline;
+  list-style-type: none;
+}
+section.competency .IT ul ul li::after {
+  content: ", ";
+}
+section.competency .IT ul ul li:last-child::after {
+  content: "";
+  margin-right: -4px;
+}
+section.competency .IT ul:has(ul) > li {
+  list-style-type: none;
+}
+section.competency .IT ul:has(ul) > li ul {
+  font-size: smaller;
+}
+section.competency .IT ul:has(ul) > li ul::before {
+  content: " (";
+  margin-right: -4px;
+}
+section.competency .IT ul:has(ul) > li ul::after {
+  content: ")";
+  margin-right: -4px;
+}
+section.competency .IT ul:not(:has(ul)) {
+  display: inline;
+}
+section.competency .IT ul:not(:has(ul)) li {
+  list-style-type: none;
+  display: inline;
+}
+section.competency .IT ul:not(:has(ul)) li::after {
+  content: ", ";
+}
+section.competency .IT ul:not(:has(ul)) li:last-child::after {
+  content: "";
+  margin-right: -4px;
+}/*# sourceMappingURL=style-latex-based.css.map */
