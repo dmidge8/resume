@@ -74,6 +74,14 @@ header p.tel::before {
 header p.driving::before {
   content: "🚗: ";
 }
+header a.linkedin {
+  color: black;
+  text-decoration: none;
+}
+header a.linkedin::before {
+  content: "🕸: ";
+  font-size: smaller;
+}
 header p.title::before {
   content: "🎓: ";
 }
@@ -176,6 +184,23 @@ section.experience .contract {
 }
 section.experience p.company-description {
   margin-left: 10px;
+}
+section.experience .tools::before {
+  content: "🔧: ";
+}
+section.experience ul.tools {
+  display: inline;
+}
+section.experience ul.tools li {
+  display: inline;
+  list-style-type: none;
+}
+section.experience ul.tools li::after {
+  content: ", ";
+}
+section.experience ul.tools li:last-child::after {
+  content: "";
+  margin-right: -4px;
 }
 section.experience p {
   margin-top: 0px;
@@ -309,4 +334,11 @@ section.competency .IT ul:not(:has(ul)) li::after {
 section.competency .IT ul:not(:has(ul)) li:last-child::after {
   content: "";
   margin-right: -4px;
+}
+section.competency .publications .date {
+  display: none;
+}
+section.competency .publications a {
+  color: #222851;
+  font-style: italic;
 }/*# sourceMappingURL=style-latex-based.css.map */
