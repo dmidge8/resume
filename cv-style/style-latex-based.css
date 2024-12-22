@@ -204,6 +204,7 @@ section.experience ul.tools li:last-child::after {
 }
 section.experience p {
   margin-top: 0px;
+  margin-bottom: 4px;
 }
 section.experience section > *:not(p.global) {
   font-size: smaller;
