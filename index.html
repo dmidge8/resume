@@ -2,13 +2,15 @@
 <html localization="CA" language="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Index of the pages for the résumés</title>
+		<title>Émile's list of résumés</title>
+        <link rel="icon" type="image/png" href="images/favicon.png">
 		<link rel="stylesheet" href="./cv-style/style-latex-based.css">
+        <link rel="stylesheet" href="./website-style/index-style.css">
 	</head>
 	<body>
         <h1>List of CVs</h1>
         <section>
-            <h2>From list</h2>
+            <h2>From the list</h2>
             Access the résumés from the list:
             <p>
                 <ul>
@@ -19,10 +21,36 @@
                 </ul>
             </p>
         </section>
-        <section hidden="hidden">
+        <section>
             <h2>From the map</h2>
             Access the résumés from the clickable map:
-            <img src = "./images/MapChart_Map.svg" alt="World map with provinces svg"/>
+
+            <!-- <img src = "./images/MapChart_Map.svg" alt="World map with provinces svg" style="background-color: transparent;"/> -->
+            <object id="WorldMapSvg" data="images/MapChart_Map.svg" alt="World map with provinces svg" type="image/svg+xml"></object>
+
+
+            <style>
+                /* #Nord_Ubangi_CD { */
+                #WorldMapSvg svg #Alaska_US {
+                /* fill: #f00; */
+                opacity: 0.75;
+  --segment-fill-fill: azure;
+  --segment-fill-stroke: lightsteelblue;
+  --segment-fill-stroke-width: 1;
+  --segment-edge-fill: none;
+  --segment-edge-stroke: deepskyblue;
+  --segment-edge-stroke-width: 3;
+  --segment-fill-fill-hover: plum;
+  --segment-fill-stroke-hover: none;
+  --segment-edge-stroke-hover: slateblue;
+                }
+                /* svg {
+    fill : green;
+} */
+            </style>
+
         </section>
+
+        <script src="./script/index.js"></script>
     </body>
 </html>

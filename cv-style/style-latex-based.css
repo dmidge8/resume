@@ -322,6 +322,9 @@ section.competency .IT ul:has(ul) > li ul::after {
   content: ")";
   margin-right: -4px;
 }
+section.competency .IT ul:has(ul) > li > * {
+  display: block;
+}
 section.competency .IT ul:not(:has(ul)) {
   display: inline;
 }
